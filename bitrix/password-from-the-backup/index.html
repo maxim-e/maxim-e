@@ -92,8 +92,25 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="_1">Узнать пароль от резервной копии битрикс</h1>
+<p>В PHP-консоли админки сайта:</p>
 <pre><code class="language-php">require($_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;/bitrix/modules/main/classes/general/backup.php&quot;);
 var_dump(CPasswordStorage::Get('dump_temporary_cache'));
+</code></pre>
+<p>На любой странице:</p>
+<pre><code class="language-php">&lt;?$_SERVER[&quot;DOCUMENT_ROOT&quot;] = realpath(dirname(__FILE__).&quot;/../..&quot;);
+
+$DOCUMENT_ROOT = $_SERVER[&quot;DOCUMENT_ROOT&quot;];
+define(&quot;NO_KEEP_STATISTIC&quot;, true);
+define(&quot;NOT_CHECK_PERMISSIONS&quot;,true);
+define('BX_NO_ACCELERATOR_RESET', true);
+
+require($_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;/bitrix/modules/main/include/prolog_before.php&quot;);
+require($_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;/bitrix/modules/main/classes/general/backup.php&quot;);
+
+var_dump(CPasswordStorage::Get('dump_temporary_cache'));
+</code></pre>
+<p>Вызываем скрипт из консоли:</p>
+<pre><code class="language-php">/usr/bin/php -f &lt;путь от корня до файла&gt;
 </code></pre></div>
             </div>
         </div>
