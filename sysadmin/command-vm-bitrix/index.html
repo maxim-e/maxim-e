@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Command vm bitrix - My Docs</title>
+        <title>Подборка команд для БитриксВМ - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Command vm bitrix</a>
+    <a href="./" class="dropdown-item active">Подборка команд для БитриксВМ</a>
 </li>
                                 </ul>
                             </li>
@@ -95,38 +95,36 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">Как узнать свободное место на виртуальной машине</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Подборка команд для БитриксВМ</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Как узнать свободное место на виртуальной машине</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Как узнать количество свободной оперативной памяти</a>
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Как узнать количество свободной оперативной памяти</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Как узнать чем занята оперативная память</a>
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">Как узнать чем занята оперативная память</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">Размеры папок в текущей папке:</a>
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">Размеры папок в текущей папке:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">Удалить все файлы и папки в директории</a>
+            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">Удалить все файлы и папки в директории</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">Подробная информация о процессоре:</a>
+            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">Подробная информация о процессоре:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            
-            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">Количество ядер:</a>
+            <li class="nav-item" data-level="2"><a href="#_8" class="nav-link">Количество ядер:</a>
               <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -134,26 +132,27 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="_1">Как узнать свободное место на виртуальной машине</h2>
+<h1 id="_1">Подборка команд для БитриксВМ</h1>
+<h2 id="_2">Как узнать свободное место на виртуальной машине</h2>
 <p><code>df -h</code></p>
-<h2 id="_2">Как узнать количество свободной оперативной памяти</h2>
+<h2 id="_3">Как узнать количество свободной оперативной памяти</h2>
 <p><code>free -m</code></p>
-<h2 id="_3">Как узнать чем занята оперативная память</h2>
+<h2 id="_4">Как узнать чем занята оперативная память</h2>
 <p><code>ps axo rss,comm,pid | awk '{ proc_list[$2] += $1; } END { for (proc in proc_list) { printf("%d\t%s\n", proc_list[proc],proc); }}' | sort -n | tail -n 10 | sort -rn | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'</code></p>
-<h2 id="_4">Размеры папок в текущей папке:</h2>
+<h2 id="_5">Размеры папок в текущей папке:</h2>
 <p>Для начала перейдите в нужную папку с помощью команды cd (после которой через пробел указываете папку, в которую хотите перейти). И дальше вводите команду:</p>
 <p><code>find . -maxdepth 1 -type d -exec du -hs {} \;</code>
 Сменить владельца файлов и папок на bitrix</p>
 <p>Сервер работает под пользователем bitrix и если вы создали файлы или папки под root без выставления больших прав, у вас не будет к ним доступа. И правильно будет сменить владельца. Делается это такой командой:
 <code>sudo chown -R bitrix:bitrix /home/bitrix/www/</code></p>
 <p>Где /home/bitrix/www/ - путь к папке с сайтом.</p>
-<h2 id="_5">Удалить все файлы и папки в директории</h2>
+<h2 id="_6">Удалить все файлы и папки в директории</h2>
 <p>Будьте внимательны с этой командой, т.к. если вы введете неправильный путь или путь к не той папке, все в ней будет удалено.
 <code>rm -rf /home/bitrix/www/bitrix/managed_cache/*</code>
 Узнать количество ядер процессора и остальную информацию о нем</p>
-<h2 id="_6">Подробная информация о процессоре:</h2>
+<h2 id="_7">Подробная информация о процессоре:</h2>
 <p><code>cat "/proc/cpuinfo</code></p>
-<h2 id="_7">Количество ядер:</h2>
+<h2 id="_8">Количество ядер:</h2>
 <p><code>nproc</code></p></div>
             </div>
         </div>
