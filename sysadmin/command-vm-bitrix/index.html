@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Узнать пароль от резервной копии битрикс - My Docs</title>
+        <title>Command vm bitrix - My Docs</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -33,29 +33,29 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">Welcome to MkDocs</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Bitrix <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../custom-property-iblock/" class="dropdown-item">Добавление произвольного типа свойства в Битрикс</a>
+    <a href="../../bitrix/custom-property-iblock/" class="dropdown-item">Добавление произвольного типа свойства в Битрикс</a>
 </li>
                                     
 <li>
-    <a href="../fatal-error-restore/" class="dropdown-item">Ошибка Fatal error: Uncaught mysqli_sql_exception: Unknown database при восстановлении резервной копии через restore.php</a>
+    <a href="../../bitrix/fatal-error-restore/" class="dropdown-item">Ошибка Fatal error: Uncaught mysqli_sql_exception: Unknown database при восстановлении резервной копии через restore.php</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Узнать пароль от резервной копии битрикс</a>
+    <a href="../../bitrix/password-from-the-backup/" class="dropdown-item">Узнать пароль от резервной копии битрикс</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sysadmin <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../sysadmin/command-vm-bitrix/" class="dropdown-item">Command vm bitrix</a>
+    <a href="./" class="dropdown-item active">Command vm bitrix</a>
 </li>
                                 </ul>
                             </li>
@@ -68,12 +68,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../fatal-error-restore/" class="nav-link">
+                                <a rel="prev" href="../../bitrix/password-from-the-backup/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../sysadmin/command-vm-bitrix/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -95,7 +95,37 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Узнать пароль от резервной копии битрикс</a>
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">Как узнать свободное место на виртуальной машине</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Как узнать количество свободной оперативной памяти</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Как узнать чем занята оперативная память</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">Размеры папок в текущей папке:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">Удалить все файлы и папки в директории</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">Подробная информация о процессоре:</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">Количество ядер:</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -104,27 +134,27 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">Узнать пароль от резервной копии битрикс</h1>
-<p>В PHP-консоли админки сайта:</p>
-<pre><code class="language-php">require($_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;/bitrix/modules/main/classes/general/backup.php&quot;);
-var_dump(CPasswordStorage::Get('dump_temporary_cache'));
-</code></pre>
-<p>На любой странице:</p>
-<pre><code class="language-php">&lt;?$_SERVER[&quot;DOCUMENT_ROOT&quot;] = realpath(dirname(__FILE__).&quot;/../..&quot;);
-
-$DOCUMENT_ROOT = $_SERVER[&quot;DOCUMENT_ROOT&quot;];
-define(&quot;NO_KEEP_STATISTIC&quot;, true);
-define(&quot;NOT_CHECK_PERMISSIONS&quot;,true);
-define('BX_NO_ACCELERATOR_RESET', true);
-
-require($_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;/bitrix/modules/main/include/prolog_before.php&quot;);
-require($_SERVER[&quot;DOCUMENT_ROOT&quot;].&quot;/bitrix/modules/main/classes/general/backup.php&quot;);
-
-var_dump(CPasswordStorage::Get('dump_temporary_cache'));
-</code></pre>
-<p>Вызываем скрипт из консоли:</p>
-<pre><code class="language-php">/usr/bin/php -f &lt;путь от корня до файла&gt;
-</code></pre></div>
+<h2 id="_1">Как узнать свободное место на виртуальной машине</h2>
+<p><code>df -h</code></p>
+<h2 id="_2">Как узнать количество свободной оперативной памяти</h2>
+<p><code>free -m</code></p>
+<h2 id="_3">Как узнать чем занята оперативная память</h2>
+<p><code>ps axo rss,comm,pid | awk '{ proc_list[$2] += $1; } END { for (proc in proc_list) { printf("%d\t%s\n", proc_list[proc],proc); }}' | sort -n | tail -n 10 | sort -rn | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'</code></p>
+<h2 id="_4">Размеры папок в текущей папке:</h2>
+<p>Для начала перейдите в нужную папку с помощью команды cd (после которой через пробел указываете папку, в которую хотите перейти). И дальше вводите команду:</p>
+<p><code>find . -maxdepth 1 -type d -exec du -hs {} \;</code>
+Сменить владельца файлов и папок на bitrix</p>
+<p>Сервер работает под пользователем bitrix и если вы создали файлы или папки под root без выставления больших прав, у вас не будет к ним доступа. И правильно будет сменить владельца. Делается это такой командой:
+<code>sudo chown -R bitrix:bitrix /home/bitrix/www/</code></p>
+<p>Где /home/bitrix/www/ - путь к папке с сайтом.</p>
+<h2 id="_5">Удалить все файлы и папки в директории</h2>
+<p>Будьте внимательны с этой командой, т.к. если вы введете неправильный путь или путь к не той папке, все в ней будет удалено.
+<code>rm -rf /home/bitrix/www/bitrix/managed_cache/*</code>
+Узнать количество ядер процессора и остальную информацию о нем</p>
+<h2 id="_6">Подробная информация о процессоре:</h2>
+<p><code>cat "/proc/cpuinfo</code></p>
+<h2 id="_7">Количество ядер:</h2>
+<p><code>nproc</code></p></div>
             </div>
         </div>
 
