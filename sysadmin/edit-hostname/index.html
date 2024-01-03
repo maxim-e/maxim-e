@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Ошибка работы с сокетами в Битрикс "Ошибка не работает" - TXdev</title>
+        <title>Смена hostname - TXdev</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -33,53 +33,53 @@
                             <li class="navitem">
                                 <a href="../.." class="nav-link">О сайте</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Bitrix <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../attach-file-email/" class="dropdown-item">Прикрепить файлы в почтовом шаблоне Битрикс</a>
+    <a href="../../bitrix/attach-file-email/" class="dropdown-item">Прикрепить файлы в почтовом шаблоне Битрикс</a>
 </li>
                                     
 <li>
-    <a href="../custom-property-iblock/" class="dropdown-item">Добавление произвольного типа свойства в Битрикс</a>
+    <a href="../../bitrix/custom-property-iblock/" class="dropdown-item">Добавление произвольного типа свойства в Битрикс</a>
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Ошибка работы с сокетами в Битрикс "Ошибка не работает"</a>
+    <a href="../../bitrix/error-socket/" class="dropdown-item">Ошибка работы с сокетами в Битрикс "Ошибка не работает"</a>
 </li>
                                     
 <li>
-    <a href="../error-upgrade-php-bitrixvm/" class="dropdown-item">Ошибка при обновлении версии PHP в БитриксВМ через menu.sh</a>
+    <a href="../../bitrix/error-upgrade-php-bitrixvm/" class="dropdown-item">Ошибка при обновлении версии PHP в БитриксВМ через menu.sh</a>
 </li>
                                     
 <li>
-    <a href="../fatal-error-restore/" class="dropdown-item">Ошибка Fatal error: Uncaught mysqli_sql_exception: Unknown database при восстановлении резервной копии через restore.php</a>
+    <a href="../../bitrix/fatal-error-restore/" class="dropdown-item">Ошибка Fatal error: Uncaught mysqli_sql_exception: Unknown database при восстановлении резервной копии через restore.php</a>
 </li>
                                     
 <li>
-    <a href="../link-view-element-iblock/" class="dropdown-item">Добавление ссылки на просмотр элемента при его редактировании в админке Битрикс</a>
+    <a href="../../bitrix/link-view-element-iblock/" class="dropdown-item">Добавление ссылки на просмотр элемента при его редактировании в админке Битрикс</a>
 </li>
                                     
 <li>
-    <a href="../logs-bitrixvm/" class="dropdown-item">Расположение логов</a>
+    <a href="../../bitrix/logs-bitrixvm/" class="dropdown-item">Расположение логов</a>
 </li>
                                     
 <li>
-    <a href="../password-from-the-backup/" class="dropdown-item">Узнать пароль от резервной копии битрикс</a>
+    <a href="../../bitrix/password-from-the-backup/" class="dropdown-item">Узнать пароль от резервной копии битрикс</a>
 </li>
                                 </ul>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sysadmin <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../sysadmin/command-vm-bitrix/" class="dropdown-item">Подборка команд для БитриксВМ</a>
+    <a href="../command-vm-bitrix/" class="dropdown-item">Подборка команд для БитриксВМ</a>
 </li>
                                     
 <li>
-    <a href="../../sysadmin/edit-hostname/" class="dropdown-item">Смена hostname</a>
+    <a href="./" class="dropdown-item active">Смена hostname</a>
 </li>
                                 </ul>
                             </li>
@@ -92,12 +92,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../custom-property-iblock/" class="nav-link">
+                                <a rel="prev" href="../command-vm-bitrix/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../error-upgrade-php-bitrixvm/" class="nav-link">
+                                <a rel="next" class="nav-link disabled">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -119,17 +119,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Ошибка работы с сокетами в Битрикс "Ошибка не работает"</a>
+            <li class="nav-item" data-level="1"><a href="#hostname" class="nav-link">Смена hostname</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Указание хоста</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Сертификаты</a>
+            <li class="nav-item" data-level="2"><a href="#hostnamectl" class="nav-link">Через hostnamectl</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#aaaa-" class="nav-link">AAAA-запись</a>
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">Вручную</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#hosts" class="nav-link">Изменение hosts</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -140,16 +140,16 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">Ошибка работы с сокетами в Битрикс "Ошибка не работает"</h1>
-<h2 id="_2">Указание хоста</h2>
-<p>В файле <code>/etc/hosts</code> указываем домен на 127.0.0.1, например <code>127.0.0.1 localhost.localdomain localhost site.pro</code>, где site.pro - наш домен</p>
-<h2 id="_3">Сертификаты</h2>
-<p>Если давно не было обновлений, то возможно что сертификаты стали быть не актуальными</p>
-<pre><code class="language-bash">yum install ca-certificates
-update-ca-trust
-</code></pre>
-<h2 id="aaaa-">AAAA-запись</h2>
-<p>При отсутствии необходимости работы сайта по IPv6 AAAA-запись из DNS домена необходимо удалить</p></div>
+<h1 id="hostname">Смена hostname</h1>
+<h2 id="hostnamectl">Через hostnamectl</h2>
+<p><code>hostnamectl set-hostname НОВОЕ-ИМЯ</code></p>
+<h2 id="_1">Вручную</h2>
+<ol>
+<li><code>hostname losst-pc НОВОЕ-ИМЯ</code></li>
+<li><code>nano /etc/hostname</code></li>
+</ol>
+<h2 id="hosts">Изменение hosts</h2>
+<p><code>nano /etc/hosts</code></p></div>
             </div>
         </div>
 
