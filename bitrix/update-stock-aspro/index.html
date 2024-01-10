@@ -149,7 +149,7 @@ echo $val = (int)preg_replace('/\D/', '',$val);
 exit;
 if($_GET['key']!=='maxVS') exit;
 if (!empty($_SERVER[&quot;DOCUMENT_ROOT&quot;])) $DOCUMENT_ROOT = $_SERVER[&quot;DOCUMENT_ROOT&quot;];
-else $DOCUMENT_ROOT = '/home/e/etoonbtu/vokrugsvet.ru/public_html';
+else $DOCUMENT_ROOT = '&lt;ПАПКА НА СЕРВЕРЕ&gt;';
 require_once($DOCUMENT_ROOT.&quot;/bitrix/modules/main/include/prolog.php&quot;);
 CModule::IncludeModule('iblock');
 $i = 0;
