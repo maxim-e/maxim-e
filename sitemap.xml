@@ -2,62 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://maxim-e.ru/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://maxim-e.ru/bitrix/attach-file-webform/</loc>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/custom-property-iblock/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/error-socket/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/error-upgrade-php-bitrixvm/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/fatal-error-restore/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/link-page-webform/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/link-view-element-iblock/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/logs-bitrixvm/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/password-from-the-backup/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/bitrix/update-stock-aspro/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/sysadmin/command-vm-bitrix/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://maxim-e.ru/sysadmin/edit-hostname/</loc>
-         <lastmod>2024-01-28</lastmod>
+         <lastmod>2024-02-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Maxim E">
-        <link rel="canonical" href="https://maxim-e.ru/bitrix/logs-bitrixvm/">
+        <link rel="canonical" href="https://maxim-e.ru/bitrix/attach-file-webform/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Расположение логов - maxim-e</title>
+        <title>Прикрепить файл в письмо вебформы битрикс - maxim-e</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../attach-file-webform/" class="dropdown-item">Прикрепить файл в письмо вебформы битрикс</a>
+    <a href="./" class="dropdown-item active">Прикрепить файл в письмо вебформы битрикс</a>
 </li>
                                     
 <li>
@@ -66,7 +66,7 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Расположение логов</a>
+    <a href="../logs-bitrixvm/" class="dropdown-item">Расположение логов</a>
 </li>
                                     
 <li>
@@ -100,12 +100,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../link-view-element-iblock/" class="nav-link">
+                                <a rel="prev" href="../.." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../password-from-the-backup/" class="nav-link">
+                                <a rel="next" href="../custom-property-iblock/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -127,29 +127,21 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Где располагаются логи виртуальной машины или окружения Битрикс</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Прикрепить файл в письмо вебформы битрикс</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#apache" class="nav-link">Логи Apache</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#nginx" class="nav-link">Логи Nginx</a>
+            <li class="nav-item" data-level="2"><a href="#1" class="nav-link">Вариант 1</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#php" class="nav-link">Лог исключений PHP</a>
+            <li class="nav-item" data-level="2"><a href="#2" class="nav-link">Вариант 2</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Лог почты</a>
+            <li class="nav-item" data-level="2"><a href="#3" class="nav-link">Вариант 3</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">Почта для пользователей сервера</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#bitrixvm" class="nav-link">Запущенные задачи BitrixVM и их результат</a>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">Полезные ссылки</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -160,20 +152,171 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">Где располагаются логи виртуальной машины или окружения Битрикс</h1>
-<h2 id="apache">Логи Apache</h2>
-<p><code>/var/log/httpd/</code></p>
-<h2 id="nginx">Логи Nginx</h2>
-<p><code>/var/log/nginx/</code></p>
-<h2 id="php">Лог исключений PHP</h2>
-<p><code>/var/log/php/exceptions.log</code></p>
-<h2 id="_2">Лог почты</h2>
-<p><code>/home/bitrix/msmtp_default.log</code>, при использовании msmtprc настройки лога указываются в файле <code>/home/bitrix/.msmtprc</code></p>
-<h2 id="_3">Почта для пользователей сервера</h2>
-<p><code>/var/spool/mail/root</code></p>
-<p><code>/var/spool/mail/bitrix</code></p>
-<h2 id="bitrixvm">Запущенные задачи BitrixVM и их результат</h2>
-<p><code>/opt/webdir/temp</code></p></div>
+<h1 id="_1">Прикрепить файл в письмо вебформы битрикс</h1>
+<h2 id="1">Вариант 1</h2>
+<pre><code class="language-php">&lt;?
+AddEventHandler(&quot;main&quot;, &quot;OnBeforeEventAdd&quot;, array(&quot;MailEventHandler&quot;, &quot;onBeforeEventAddHandler&quot;));
+
+class MailEventHandler
+{
+static function onBeforeEventAddHandler(&amp;$event, &amp;$lid, &amp;$arFields, &amp;$message_id, &amp;$files)
+{
+
+if ($event === 'FORM_FILLING_SIMPLE_FORM_4' &amp;&amp; $message_id === '119') {
+
+if (!is_array($files)) $files = [];
+
+foreach ($arFields as $key =&gt; $field) {
+
+if ($link = self::getLinkFromField($field)) {
+
+if ($arFile = self::getFileFromLink($link)) {
+
+$files[] = $arFile['FILE_ID'];
+
+}
+
+}
+
+}
+}
+}
+
+// Ищем ссылки на скачивания файлов в письме
+static function getLinkFromField($field)
+{
+// Укажите https или http, в зависимости от того, как работает ваш сайт
+preg_match(&quot;/(https\:.*form_show_file.*action\=download)/&quot;, $field, $out);
+return ($out[1] ?: false);
+}
+
+static function getFileFromLink($link)
+{
+$uri = new \Bitrix\Main\Web\Uri($link);
+parse_str($uri-&gt;getQuery(), $query);
+return CFormResult::GetFileByHash($query[&quot;rid&quot;], $query[&quot;hash&quot;]);
+}
+
+}
+?&gt;
+</code></pre>
+<h2 id="2">Вариант 2</h2>
+<pre><code class="language-php">&lt;?php
+class Feedback
+{
+    public static $events = [
+        'FORM_FILLING_SIMPLE_FORM_1',
+    ];
+
+    public static function onBeforeEventAddHandler(&amp;$event, &amp;$lid, &amp;$arFields, &amp;$message_id, &amp;$files)
+    {
+        if (in_array($event, static::$events)) {
+            if (!is_array($files)) $files = [];
+            foreach ($arFields as $key =&gt; $field) {
+                if ($arLink = self::getLinkFromField($field)) {
+                    if ($arFiles = self::getFileFromLink($arLink)) {
+                        $files[] = $arFiles;
+                    }
+                }
+            }
+        }
+    }
+
+    public static function getLinkFromField($field)
+    {
+        //preg_match(&quot;/(https?\:.*form_show_file.*action\=download)/&quot;, $field, $out);
+        preg_match_all(&quot;/(https?\:.*form_show_file.*action\=download)/&quot;, $field, $out);
+        return ($out[1] ?: false);
+    }
+
+    public static function getFileFromLink($arLink)
+    {
+        $arFiles = [];
+        foreach($arLink as $link)
+        {
+            $uri = new \Bitrix\Main\Web\Uri($link);
+            parse_str($uri-&gt;getQuery(), $query);
+            $arFile = static::GetFileByHash($query[&quot;rid&quot;], $query[&quot;hash&quot;]);
+            $arFiles[] = $arFile[&quot;FILE_ID&quot;];
+        }
+        return $arFiles;
+    }
+
+
+    protected static function GetFileByHash($RESULT_ID, $HASH)
+    {
+        global $DB, $APPLICATION, $strError, $USER;
+
+        $err_mess = (\CAllFormResult::err_mess()) . &quot;
+Function: GetAnswerFile
+Line: &quot;;
+
+        $RESULT_ID = intval($RESULT_ID);
+        if ($RESULT_ID &lt;= 0 || strlen(trim($HASH)) &lt;= 0) return;
+
+        $strSql = &quot;
+        SELECT
+            F.ID as FILE_ID,
+            F.FILE_NAME,
+            F.SUBDIR,
+            F.CONTENT_TYPE,
+            F.HANDLER_ID,
+            F.FILE_SIZE,
+            RA.USER_FILE_NAME ORIGINAL_NAME,
+            RA.USER_FILE_IS_IMAGE,
+            RA.FORM_ID, R.USER_ID
+        FROM b_form_result R
+        LEFT JOIN b_form_result_answer RA ON RA.RESULT_ID=R.ID
+        INNER JOIN b_file F ON (F.ID = RA.USER_FILE_ID)
+        WHERE R.ID = '&quot; . $RESULT_ID . &quot;'
+        AND RA.USER_FILE_HASH = '&quot; . $DB-&gt;ForSql($HASH, 255) . &quot;'
+        &quot;;
+
+        $z = $DB-&gt;Query($strSql, false, $err_mess . __LINE__);
+        if ($zr = $z-&gt;Fetch()) {
+            return $zr;
+        } else {
+            return false;
+        }
+    }
+}
+AddEventHandler(&quot;main&quot;, &quot;OnBeforeEventAdd&quot;,[Feedback::class,&quot;onBeforeEventAddHandler&quot;]);
+?&gt;
+</code></pre>
+<h2 id="3">Вариант 3</h2>
+<p>Повесить на добавление результатов:</p>
+<pre><code class="language-php">&lt;?php
+function onBeforeResultAddHandler($WEB_FORM_ID,&amp;$arFields,&amp;$arrVALUES){
+    $input_id = &quot;&quot;;
+    switch($WEB_FORM_ID){//id вебформы
+        case 5:
+        $input_id = 62;//id ответа, где будут ссылки на файлы
+        break;
+    }
+    if(!empty($_FILES) &amp;&amp; $input_id!=&quot;&quot;){
+            $files = reset($_FILES);
+            foreach($files[&quot;name&quot;] as $id=&gt;$name){
+                $arFile = array(
+                &quot;name&quot; =&gt; $name,
+                &quot;tmp_name&quot; =&gt; $files[&quot;tmp_name&quot;][$id],
+                &quot;type&quot; =&gt; $files[&quot;type&quot;][$id],
+                &quot;MODULE_ID&quot;=&gt;&quot;form&quot;,
+                &quot;size&quot;=&gt;$files[&quot;size&quot;][$id]
+                );
+
+                $res = CFile::SaveFile($arFile,&quot;form_result&quot;);//сохраняем файлы и создаем массив ссылок на них
+                if($res){
+                    $arFiles[] = &quot;https://www.bwt.ru&quot;.CFile::GetPath($res);
+                }
+            }
+            $arrVALUES[&quot;form_text_&quot;.$input_id] = implode(&quot;; &quot;,$arFiles);
+        }
+    return true;
+}
+?&gt;
+</code></pre>
+<h2 id="_2">Полезные ссылки</h2>
+<p>https://dev.1c-bitrix.ru/community/webdev/user/114106/blog/9787/</p></div>
             </div>
         </div>
 
