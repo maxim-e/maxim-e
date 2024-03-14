@@ -1,2 +1,2 @@
-Robots: *
+User-agent: *
 Allow: /
